@@ -1,13 +1,12 @@
 import React, { Component } from "react";
-import {createBottomTabNavigator, createAppContainer} from 'react-navigation';
+import { createAppContainer} from 'react-navigation';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 import {createSharedElementStackNavigator} from 'react-navigation-shared-element';
 import {enableScreens} from 'react-native-screens';
-import Map from './Screens/Map'
-import QrCode from './Screens/QrCode'
-import Events from './Screens/Events'
+import { Map, Events, QrCode } from './screens'
 import { Provider } from 'react-redux'
 import createStore from './redux'
-enableScreens();
+
 
 // Instead of calling `createStackNavigator`, wrap it using `createSharedElementStackNavigator`
 // const StackNavigator = createSharedElementStackNavigator(
