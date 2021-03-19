@@ -1,8 +1,12 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 
 export default class Events extends React.Component {
   render() {
-    return View
+    return <View>
+      <Text>
+        blabla
+      </Text>
+    </View>
   }
 }
