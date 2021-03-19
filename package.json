@@ -3,7 +3,9 @@
   "version": "3.3.0",
   "private": true,
   "scripts": {
-    "start": "react-native start"
+    "start": "npx react-native start",
+    "android": "npx react-native run-android",
+    "ios": "npx react-native run-ios"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.12.1",
