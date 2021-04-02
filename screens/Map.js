@@ -11,7 +11,7 @@ export default class Map extends React.Component {
     render() {
         return (
             <View>
-                <Header />
+                <Header/>
             </View>
         )
     }

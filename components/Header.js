@@ -2,28 +2,33 @@ import React from 'react'
 import SplashScreen from 'react-native-splash-screen'
 import { SafeAreaView, TextInput , StyleSheet, TouchableOpacity} from 'react-native'
 import { Icon } from 'native-base';
+
 export default class Header extends React.Component {
     constructor() {
         super();
-        this.states={
-            research:"salut"
+        this.state={
+            research:null
         }
         this.onChangResearch = this.onChangResearch.bind(this)
     }
+
     async componentDidMount() {
         SplashScreen.hide()
     }
-    onChangResearch = () =>{
+
+    onChangResearch = (research) =>{
         this.setState({
-            research: this.state.research
+            research: research
         })
     }
     render() {
+        console.log(this.state.research)
         return <SafeAreaView style={styles.safeAre}>
             <TextInput
                 style={styles.searchBar}
-                onChangeText={this.onChangResearch}
+                onSubmitEditing={e => this.onChangResearch(e.nativeEvent.text)}
                 placeholder="Recherche"
+                value={this.state.research}
                 keyboardType="default"
             />
             <TouchableOpacity style={styles.btn}>
@@ -37,23 +42,25 @@ const styles = StyleSheet.create({
         position: "absolute",
         top: 0,
         zIndex: 5,
-        marginHorizontal:10,
-        marginVertical:10,
+        width: "100%",
+        paddingHorizontal:15,
+        paddingVertical:10,
         flexDirection:'row',
-        justifyContent:'space-between',
+        justifyContent:'space-around',
         alignItems:'center',
     },
+
     searchBar: {
         height: 40,
         width:300,
         paddingHorizontal: 10,
         borderWidth: 1,
         borderRadius:10,
-        marginRight: 20,
+        marginRight: 15,
     },
     btn:{
-        backgroundColor:"#5dc7d4",
-        paddingHorizontal:10,
+        backgroundColor:"#01ACF5",
+        paddingHorizontal:8,
         justifyContent: "center",
         height: 40,
         borderRadius: 100
