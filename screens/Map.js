@@ -1,7 +1,7 @@
 import React from 'react'
 import SplashScreen from 'react-native-splash-screen'
 import { View } from 'react-native'
-import Header from "../components/Header";
+import Header from "../components/Header.js";
 
 
 export default class Map extends React.Component {
