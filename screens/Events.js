@@ -3,6 +3,7 @@ import {Agenda, LocaleConfig} from 'react-native-calendars';
 import {Card, Avatar} from 'react-native-paper';
 import React from 'react';
 import moment from 'moment';
+import ModalDetailed from "./ModalDetailed";
 
 LocaleConfig.locales['fr'] = {
   monthNames: ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'],
@@ -161,7 +162,13 @@ const json = {
 
 export default class Events extends React.Component {
   state = {
-    items: json
+    items: json,
+    modalData: '',
+    showModal: false
+  }
+
+  passDataToModal(event){
+    this.setState({modalData: event, showModal: true});
   }
 
   render() {
@@ -204,7 +211,7 @@ export default class Events extends React.Component {
 
     const renderItem = (item) => {
       return (
-          <TouchableOpacity style={{marginRight: 10, marginTop: 17}}>
+          <TouchableOpacity onPress={() => this.passDataToModal(item)} style={{marginRight: 10, marginTop: 17}}>
             <Card>
               <Card.Content>
                 <View>
@@ -244,6 +251,7 @@ export default class Events extends React.Component {
           }}
 
       />
+      <ModalDetailed show={this.state.showModal} modalData={this.state.modalData} />
     </View>
   }
 }
