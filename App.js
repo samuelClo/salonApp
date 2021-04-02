@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { createAppContainer} from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { Map, Events, QrCode } from './screens'
+import { Map, Events, QrCode } from './Screens'
 import { Provider } from 'react-redux'
 import createStore from './redux'
 
