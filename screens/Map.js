@@ -10,10 +10,9 @@ import Svg, {
 } from 'react-native-svg';
 
 const Map = () => {
-    // React.useEffect(() => {
-    //   SplashScreen.hide()
-    // }, [])
-
+    React.useEffect(() => {
+        SplashScreen.hide()
+    }, [])
 
     const windowWidth = useWindowDimensions().width;
     const windowHeight = useWindowDimensions().height;
