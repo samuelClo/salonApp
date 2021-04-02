@@ -10,7 +10,10 @@ import {
 } from 'react-native';
 
 import QRCodeScanner from 'react-native-qrcode-scanner';
+<<<<<<< HEAD
 import { RNCamera } from 'react-native-camera';
+=======
+>>>>>>> team-nav
 
 export default class ScanScreen extends Component {
   onSuccess = e => {
