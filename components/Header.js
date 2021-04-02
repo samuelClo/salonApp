@@ -26,6 +26,7 @@ export default class Header extends React.Component {
         return <SafeAreaView style={styles.safeAre}>
             <TextInput
                 style={styles.searchBar}
+                onChangeText={this.onChangResearch}
                 onSubmitEditing={e => this.onChangResearch(e.nativeEvent.text)}
                 placeholder="Recherche"
                 value={this.state.research}
