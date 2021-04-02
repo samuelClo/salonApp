@@ -10,9 +10,9 @@ import Svg, {
 } from 'react-native-svg';
 
 const Map = () => {
-  React.useEffect(() => {
-    SplashScreen.hide()
-  }, [])
+  // React.useEffect(() => {
+  //   SplashScreen.hide()
+  // }, [])
 
 
   const windowWidth = useWindowDimensions().width;
@@ -22,6 +22,7 @@ const Map = () => {
 
   return (
     <View style={{ flex: 1, backgroundColor: 'red' }}>
+      <Header/>
       <ReactNativeZoomableView
         maxZoom={4}
         minZoom={1}
