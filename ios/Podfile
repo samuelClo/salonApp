@@ -7,6 +7,13 @@ target 'templateanim' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
+  
+  permissions_path = '../node_modules/react-native-permissions/ios'
+  pod 'Permission-Camera', :path => "#{permissions_path}/Camera"
+
+  pod 'react-native-camera', :path => '../node_modules/react-native-camera'
+
+  pod 'RNPermissions', :path => '../node_modules/react-native-permissions'
 
   target 'templateanimTests' do
     inherit! :complete
