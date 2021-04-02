@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
     safeAre:{
         position: "absolute",
         top: 0,
+        backgroundColor: "white",
         zIndex: 5,
         width: "100%",
         paddingHorizontal:15,
