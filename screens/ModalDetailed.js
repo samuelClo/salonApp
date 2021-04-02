@@ -22,6 +22,15 @@ class ModalDetailed extends Component {
               <TouchableOpacity style={styles.centeredView} onPress={() => this.props.unShow()}>
                 <View style={styles.modalView}>
                   <Text style={styles.modalText}> {this.props.modalData.title} </Text>
+                  <Text>
+                    {this.props.modalData.start} {this.props.modalData.end}
+                  </Text>
+                  <Text>
+                    {this.props.modalData.categories}
+                  </Text>
+                  <Text>
+                    {this.props.modalData.content}
+                  </Text>
                 </View>
               </TouchableOpacity>
             </Modal>
