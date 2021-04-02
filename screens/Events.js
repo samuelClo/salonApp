@@ -3,6 +3,6 @@ import { View } from 'react-native'
 
 export default class Events extends React.Component {
   render() {
-    return View
+    return <View/>
   }
 }

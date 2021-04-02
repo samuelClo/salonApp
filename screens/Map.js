@@ -4,10 +4,9 @@ import { View } from 'react-native'
 
 
 export default class Map extends React.Component {
-   async componentDidMount() {
-      SplashScreen.hide()
-    }
-
+   // async componentDidMount() {
+   //    SplashScreen.hide()
+   //  }
     render() {
       return <View/>
     }
