@@ -41,6 +41,7 @@ export default class Header extends React.Component {
 const styles = StyleSheet.create({
     safeAre:{
         position: "absolute",
+        backgroundColor: "white",
         top: 0,
         backgroundColor: "white",
         zIndex: 5,
