@@ -1,0 +1,6 @@
+module Pods_templateanim {
+  umbrella header "Pods-templateanim-umbrella.h"
+
+  export *
+  module * { export * }
+}
