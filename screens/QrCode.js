@@ -25,16 +25,6 @@ export default class ScanScreen extends Component {
             Linking
                 .openURL(e.data)
                 .catch(err => console.error('An error occured', err));
-
-<<<<<<< Updated upstream
-import QRCodeScanner from 'react-native-qrcode-scanner';
-<<<<<<< HEAD
-import { RNCamera } from 'react-native-camera';
-=======
->>>>>>> team-nav
-=======
->>>>>>> Stashed changes
-
         } else {
             this.setState({
                 result: e,
