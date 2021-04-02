@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Modal, StyleSheet, Text, View} from "react-native";
+import {Modal, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 
 class ModalDetailed extends Component {
   state = {
@@ -10,7 +10,6 @@ class ModalDetailed extends Component {
     return props.show !== state.modalVisible ? {modalVisible: props.show} : null;
   }
 
-
   render() {
     const {modalVisible} = this.state;
     return (
@@ -18,12 +17,13 @@ class ModalDetailed extends Component {
                     animationType="slide"
                     transparent={true}
                     visible={modalVisible}
+                    onRequestClose={() => this.props.unShow()}
             >
-              <View style={styles.centeredView}>
+              <TouchableOpacity style={styles.centeredView} onPress={() => this.props.unShow()}>
                 <View style={styles.modalView}>
                   <Text style={styles.modalText}> {this.props.modalData.title} </Text>
                 </View>
-              </View>
+              </TouchableOpacity>
             </Modal>
     );
   }

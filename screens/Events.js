@@ -251,7 +251,7 @@ export default class Events extends React.Component {
           }}
 
       />
-      <ModalDetailed show={this.state.showModal} modalData={this.state.modalData} />
+      <ModalDetailed unShow={() => this.setState({showModal: false})} show={this.state.showModal} modalData={this.state.modalData} />
     </View>
   }
 }
