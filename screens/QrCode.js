@@ -44,9 +44,7 @@ export default class ScanScreen extends Component {
         const { scan, ScanResult, result } = this.state
         return (
             <View style={styles.scrollViewStyle}>
-                <Fragment>
                     <StatusBar barStyle="dark-content" />
-                    <Text style={styles.textTitle}>Scan the Stand near to you</Text>
                     {ScanResult &&
                         <Fragment>
                             <Text style={styles.textTitle1}>Result !</Text>
@@ -65,23 +63,11 @@ export default class ScanScreen extends Component {
                         <QRCodeScanner
                             reactivate={true}
                             showMarker={true}
+                            cameraStyle={{height: '100%'}}
                             ref={(node) => { this.scanner = node }}
                             onRead={this.onSuccess}
-                            topContent={
-                                <Text style={styles.centerText}>
-                                  you'll find all the information you want thanks to that
-                                </Text>
-                            }
-                            bottomContent={
-                                <View>
-                                    <TouchableOpacity style={styles.buttonTouchable} onPress={() => this.scanner.reactivate()}>
-                                        <Text style={styles.buttonTextStyle}>Scan !</Text>
-                                    </TouchableOpacity>
-                                </View>
-                            }
                         />
                     }
-                </Fragment>
             </View>
 
         );
