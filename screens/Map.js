@@ -8,11 +8,16 @@ import Svg, {
     Rect,
     Polygon,
 } from 'react-native-svg';
+import ParametersRedux from "../redux/ParametersRedux";
+import {connect} from "react-redux";
 
-const Map = () => {
-    // React.useEffect(() => {
-    //   SplashScreen.hide()
-    // }, [])
+const Map = (props) => {
+
+    React.useEffect(() => {
+      // SplashScreen.hide()
+        props.askForBrands('map')
+        props.askForEvents('events')
+    }, [])
 
 
     const windowWidth = useWindowDimensions().width;
@@ -165,4 +170,20 @@ const styles = StyleSheet.create({
 
 });
 
-export default Map
+const mapStateToProps = state => {
+    return {
+        brands: state.ParametersStore.brands,
+        events: state.ParametersStore.events
+    }
+}
+const mapDispatchToProps = dispatch => {
+    return {
+        askForBrands: from => dispatch(ParametersRedux.askForBrands(from)),
+        askForEvents: from => dispatch(ParametersRedux.askForEvents(from))
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Map)

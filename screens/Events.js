@@ -4,6 +4,7 @@ import {Card, Avatar} from 'react-native-paper';
 import React from 'react';
 import moment from 'moment';
 import ModalDetailed from "./ModalDetailed";
+import {connect} from "react-redux";
 
 LocaleConfig.locales['fr'] = {
   monthNames: ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'],
@@ -15,86 +16,16 @@ LocaleConfig.locales['fr'] = {
 
 LocaleConfig.defaultLocale = 'fr';
 
-const json = {
-  "2021-04-01": [
-    {
-      "title": "Finales de la CapGame Arena",
-      "content": "Ce format de compétition inclusif invite les équipes à être composées de personnes en situation de handicap. Après des qualifications ayant pris place durant le mois d'octobre, la Scène PGW accueille les finales sur les jeux eFootball PES 2020, Forza Motorsport 7 et Street Fighter V Arcade Edition.",
-      "start": "140000",
-      "end": "180000",
-      "categories": ["Handicap", "Esport"],
-      "check": "0"
-    },
-    {
-      "title": "Coupe Silver Geek PGW",
-      "content": "Le jeu vidéo c'est pour tout le monde quel que soit l'âge, et l'association Silver Geek est bien décidée à le démontrer à travers la coupe Silver Geek PGW. Venant de la France entière, 4 équipes de seniors s'affronteront sur Wii Bowling pour se départager et remporter le titre de champion de France Silver Geek.",
-      "start": "100000",
-      "end": "120000",
-      "categories": ["Handicap", "Esport"],
-      "check": "0"
-    },
-    {
-      "title": "MO5 World Cup",
-      "content": "La Scène PGW accueillera l'association MO5 pour une compétition sur SEGA Saturn pour revivre avec nostalgie vos meilleurs moments sur cette console emblématique. Ce tournoi sera également l'occasion de faire découvrir aux plus jeunes les merveilles de l'Esport rétro !",
-      "start": "120000",
-      "end": "140000",
-      "categories": ["Handicap", "Esport", "Retro"],
-      "check": "0"
-    },
-  ],
-  "2021-04-02": [
-    {
-      "title": "Dragonium - MINI TOURNOI STREET FIGHTER 5",
-      "content": "Venez affronter Davsnot, joueur professionnel sur Street Fighter V et malvoyant.Pour corser les choses, Davsnot jouera avec un bandeau sur les yeux et le challengeur jouera avec des lunettes simulant des problèmes de vision.Pour relever le défi, participez au tirage au sort sur la scène PGW !",
-      "start": "160000",
-      "end": "180000",
-      "categories": ["Handicap", "Esport", "Versus"],
-      "check": "0"
-    },
-    {
-      "title": "Teamfight Tactics (ESWC, ACER)",
-      "content": "La Coupe Kennen réunit les meilleurs joueurs européens de Teamfight Tactics. Rendez-vous dimanche 3 novembre sur la grande scène de l'ESWC pour la finale à partir de 12 h 30.",
-      "start": "100000",
-      "end": "110000",
-      "categories": ["Riot", "Esport", "ESWC"],
-      "check": "0"
-    },
-    {
-      "title": "Just Dance 2019 (ESWC)",
-      "content": "La Coupe Kennen réunit les meilleurs joueurs européens de Teamfight Tactics. Rendez-vous dimanche 3 novembre sur la grande scène de l'ESWC pour la finale à partir de 12 h 30.",
-      "start": "120000",
-      "end": "140000",
-      "categories": ["Danse", "Esport", "ESWC"],
-      "check": "0"
-    },
-  ],
-  "2021-04-03": [
-    {
-      "title": "EA Sports FIFA 20",
-      "content": "La scène principale dédiée aux compétitions d'Esport sera également le théâtre de showmatches, mettant en scène les intervenants professionnels de chaque jeu, soit les uns contre les autres, soit contre des visiteurs du salon. Le planning des showmatches sera disponible sur l'application PlayStation Experience.",
-      "start": "100000",
-      "end": "140000",
-      "categories": ["EASports", "Esport"],
-      "check": "0"
-    },
-    {
-      "title": "Super Smash Bros. Ultimate/Splatoon 2 (ESWC, Nintendo)",
-      "content": "Nintendo vous donne rendez-vous à l'European Smash Ball Team Cup ! Les 12 meilleures équipes européennes se disputent le premier titre le vendredi 1er novembre à partir de 16 h.",
-      "start": "100000",
-      "end": "120000",
-      "categories": ["Nintendo", "ESWC", "Esport"],
-      "check": "0"
+class Events extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      items: this.props.events,
+      modalData: {
+        categories: []
+      },
+      showModal: false
     }
-  ]
-};
-
-export default class Events extends React.Component {
-  state = {
-    items: json,
-    modalData: {
-      categories: []
-    },
-    showModal: false
   }
 
   passDataToModal(event){
@@ -108,12 +39,13 @@ export default class Events extends React.Component {
     };
 
     const reorder = () => {
-      for (let k in json) {
-        json[k].sort((a, b) => (moment(a.start, 'HHmmss') > moment(b.start, 'HHmmss')) ? 1 : -1)
+      const items = this.state.items
+      for (let k in items) {
+        items[k].sort((a, b) => (moment(a.start, 'HHmmss') > moment(b.start, 'HHmmss')) ? 1 : -1)
       }
     }
 
-    reorder()
+
 
     const loadItems = (day) => {
       const {items} = this.state;
@@ -185,6 +117,16 @@ export default class Events extends React.Component {
     </View>
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    events: state.ParametersStore.events
+  }
+}
+
+export default connect(
+    mapStateToProps,
+)(Events)
 
 const styles = StyleSheet.create({
   fontBold: {

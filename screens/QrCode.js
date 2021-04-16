@@ -2,14 +2,17 @@ import React, { Component, Fragment } from 'react';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import styles from './scanStyle'
 import {TouchableOpacity, Text, StatusBar, Linking, View} from 'react-native';
+import ParametersRedux from "../redux/ParametersRedux";
+import {connect} from "react-redux";
 
-export default class ScanScreen extends Component {
+class ScanScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
             scan: true,
             ScanResult: false,
-            result: null
+            result: null,
+            brands: this.props.brands
         };
     }
 
@@ -73,3 +76,13 @@ export default class ScanScreen extends Component {
         );
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        brands: state.ParametersStore.brands
+    }
+}
+
+export default connect(
+    mapStateToProps,
+)(ScanScreen)

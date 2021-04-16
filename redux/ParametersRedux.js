@@ -7,9 +7,11 @@ import Immutable from 'seamless-immutable'
 //then go to step 2 : check the XXX_XXX type to call reducer step 3
 //ACTION -> TYPE
 const { Types, Creators } = createActions({
-  updateIsFirstTime: ['isFirstTime'],
-  updateMonTitre:['monTitre'],
-  askForFoods:['categorie']
+  updateBrands: ['brands'],
+  updateEvents: ['events'],
+  askForBrands:['from'],
+  askForEvents:['from'],
+
 })
 
 export const ParametersRedux = Types
@@ -18,40 +20,48 @@ export default Creators
 /* ------------- Initial State ------------- */
 //Very first step 0, we have to initiate the state
 export const INITIAL_STATE = Immutable({
-  isFirstTime: true,
-  monTitre: 'my first title'
+  brands: [],
+  events: null
 })
 
 /* ------------- Reducers ------------- */
 //this is the step 3 - last step
 //the reducer has to modify the overall state
 
-export const updateIsFirstTime = (
+
+export const askForBrands = (
   state,
-  { isFirstTime }
+  {from}
 ) => {
   return {
     ...state,
-    isFirstTime
   }
 }
-
-export const updateMonTitre = (
+export const askForEvents = (
   state,
-  { monTitre }
+  {from}
 ) => {
   return {
     ...state,
-    monTitre
   }
 }
 
-export const askForFoods = (
-  state,
-  {categorie}
+export const updateBrands = (
+    state,
+    { brands }
 ) => {
   return {
-    ...state
+    ...state,
+    brands
+  }
+}
+export const updateEvents = (
+    state,
+    { events }
+) => {
+  return {
+    ...state,
+    events
   }
 }
 
@@ -59,7 +69,8 @@ export const askForFoods = (
 //this is the step 2
 //in order to call a reducer "updateMMR" from XXX_XXX as type
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.UPDATE_IS_FIRST_TIME]: updateIsFirstTime,
-  [Types.UPDATE_MON_TITRE]: updateMonTitre,
-  [Types.ASK_FOR_FOODS]: askForFoods
+  [Types.UPDATE_BRANDS]: updateBrands,
+  [Types.UPDATE_EVENTS]: updateEvents,
+  [Types.ASK_FOR_BRANDS]: askForBrands,
+  [Types.ASK_FOR_EVENTS]: askForEvents
 })
