@@ -85,85 +85,15 @@ const json = {
       "categories": ["Nintendo", "ESWC", "Esport"],
       "check": "0"
     }
-  ],
-  "2021-04-04": [
-    {
-      "title": "EA Sports FIFA 20",
-      "content": "La scène principale dédiée aux compétitions d'Esport sera également le théâtre de showmatches, mettant en scène les intervenants professionnels de chaque jeu, soit les uns contre les autres, soit contre des visiteurs du salon. Le planning des showmatches sera disponible sur l'application PlayStation Experience.",
-      "start": "100000",
-      "end": "140000",
-      "categories": ["EASports", "Esport"],
-      "check": "0"
-    },
-    {
-      "title": "Super Smash Bros. Ultimate/Splatoon 2 (ESWC, Nintendo)",
-      "content": "Nintendo vous donne rendez-vous à l'European Smash Ball Team Cup ! Les 12 meilleures équipes européennes se disputent le premier titre le vendredi 1er novembre à partir de 16 h.",
-      "start": "100000",
-      "end": "120000",
-      "categories": ["Nintendo", "ESWC", "Esport"],
-      "check": "0"
-    }
-  ],
-  "2021-04-05": [
-    {
-      "title": "EA Sports FIFA 20",
-      "content": "La scène principale dédiée aux compétitions d'Esport sera également le théâtre de showmatches, mettant en scène les intervenants professionnels de chaque jeu, soit les uns contre les autres, soit contre des visiteurs du salon. Le planning des showmatches sera disponible sur l'application PlayStation Experience.",
-      "start": "100000",
-      "end": "140000",
-      "categories": ["EASports", "Esport"],
-      "check": "0"
-    },
-    {
-      "title": "Super Smash Bros. Ultimate/Splatoon 2 (ESWC, Nintendo)",
-      "content": "Nintendo vous donne rendez-vous à l'European Smash Ball Team Cup ! Les 12 meilleures équipes européennes se disputent le premier titre le vendredi 1er novembre à partir de 16 h.",
-      "start": "100000",
-      "end": "120000",
-      "categories": ["Nintendo", "ESWC", "Esport"],
-      "check": "0"
-    }
-  ],
-  "2021-04-06": [
-    {
-      "title": "EA Sports FIFA 20",
-      "content": "La scène principale dédiée aux compétitions d'Esport sera également le théâtre de showmatches, mettant en scène les intervenants professionnels de chaque jeu, soit les uns contre les autres, soit contre des visiteurs du salon. Le planning des showmatches sera disponible sur l'application PlayStation Experience.",
-      "start": "100000",
-      "end": "140000",
-      "categories": ["EASports", "Esport"],
-      "check": "0"
-    },
-    {
-      "title": "Super Smash Bros. Ultimate/Splatoon 2 (ESWC, Nintendo)",
-      "content": "Nintendo vous donne rendez-vous à l'European Smash Ball Team Cup ! Les 12 meilleures équipes européennes se disputent le premier titre le vendredi 1er novembre à partir de 16 h.",
-      "start": "100000",
-      "end": "120000",
-      "categories": ["Nintendo", "ESWC", "Esport"],
-      "check": "0"
-    }
-  ],
-  "2021-04-07": [
-    {
-      "title": "EA Sports FIFA 20",
-      "content": "La scène principale dédiée aux compétitions d'Esport sera également le théâtre de showmatches, mettant en scène les intervenants professionnels de chaque jeu, soit les uns contre les autres, soit contre des visiteurs du salon. Le planning des showmatches sera disponible sur l'application PlayStation Experience.",
-      "start": "100000",
-      "end": "140000",
-      "categories": ["EASports", "Esport"],
-      "check": "0"
-    },
-    {
-      "title": "Super Smash Bros. Ultimate/Splatoon 2 (ESWC, Nintendo)",
-      "content": "Nintendo vous donne rendez-vous à l'European Smash Ball Team Cup ! Les 12 meilleures équipes européennes se disputent le premier titre le vendredi 1er novembre à partir de 16 h.",
-      "start": "100000",
-      "end": "120000",
-      "categories": ["Nintendo", "ESWC", "Esport"],
-      "check": "0"
-    }
   ]
 };
 
 export default class Events extends React.Component {
   state = {
     items: json,
-    modalData: '',
+    modalData: {
+      categories: []
+    },
     showModal: false
   }
 
